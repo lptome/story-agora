@@ -3,13 +3,35 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>Dashboard</title>
+<link rel="stylesheet"
+  href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+  integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z"
+  crossorigin="anonymous">
 </head>
 <body>
-	<h1>Story Agora Dashboard</h1>
-
-	<form action="/logout" method="post">
-		<input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}">
-		<button type="submit">Logout</button>
-	</form>
+  <div class="container" style="margin-top: 2em">
+    <div class="row">
+      <div class="col-8">
+        <h1>Story Agora Dashboard</h1>
+      </div>
+      <div class="col-4">
+        <form action="/logout" method="post" class="float-right">
+          <input type="hidden" th:name="${_csrf.parameterName}"
+            th:value="${_csrf.token}">
+          <button type="submit" class="btn btn-primary">Logout</button>
+        </form>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-4">
+        <form action="/stories" method="post">
+          <input type="hidden" th:name="${_csrf.parameterName}"
+            th:value="${_csrf.token}">
+          <button type="submit" class="btn btn-primary" id="createStory">Create
+            a new Story</button>
+        </form>
+      </div>
+    </div>
+  </div>
 </body>
 </html>
