@@ -23,6 +23,7 @@ public class User {
 	private String password;
 	private String name;
 	private Set<Authority> authorities = new HashSet<>();
+	private Set<Story> stories = new HashSet<>();
 	
 	@Id @GeneratedValue(strategy=GenerationType.IDENTITY)
 	public Long getId() {
@@ -64,6 +65,15 @@ public class User {
 
 	public void setAuthorities(Set<Authority> authorities) {
 		this.authorities = authorities;
+	}
+	
+	@OneToMany(cascade = CascadeType.PERSIST, fetch = FetchType.LAZY, mappedBy= "user")
+	public Set<Story> getStories(){
+		return stories;
+	}
+	
+	public void setStories(Set<Story> stories) {
+		this.stories = stories;
 	}
 
 	@Override
