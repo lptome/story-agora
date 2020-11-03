@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import com.storyagora.domain.User;
-import com.storyagora.security.UserService;
+import com.storyagora.service.UserService;
 
 @Controller
 public class LoginController {

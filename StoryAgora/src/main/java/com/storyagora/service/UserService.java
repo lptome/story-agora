@@ -1,4 +1,4 @@
-package com.storyagora.security;
+package com.storyagora.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -6,6 +6,7 @@ import org.springframework.stereotype.Service;
 
 import com.storyagora.domain.User;
 import com.storyagora.repositories.UserRepository;
+import com.storyagora.security.Authority;
 
 @Service
 public class UserService {

@@ -24,13 +24,14 @@ public class StoryController {
 	@Autowired
 	private StoryRepository storyRepo;
 	
-	@GetMapping("/stories")
-	public String getStories(ModelMap model) {
-		return "story";
+	@GetMapping("/story")
+	public String redirect() {
+		return "redirect:/dashboard";
 	}
 	
-	@GetMapping("stories/{storyID}")
+	@GetMapping("story/{storyID}")
 	public String getStory(@PathVariable Long storyID, ModelMap model, HttpServletResponse response) throws IOException {
+		
 		Optional<Story> storyOpt = storyRepo.findById(storyID);
 		
 		if (storyOpt.isPresent()) {
@@ -42,14 +43,6 @@ public class StoryController {
 		}
 		return "story";
 	}
+
 	
-	@PostMapping("/stories")
-	public String createStory(@AuthenticationPrincipal User user) {
-		
-		Story story = new Story();
-		story.setUser(user);
-		story = storyRepo.save(story);
-		
-		return "redirect:/stories/" + story.getId();
-	}
 }
