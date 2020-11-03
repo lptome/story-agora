@@ -4,6 +4,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -19,6 +20,7 @@ import com.storyagora.security.Authority;
 public class User {
 	
 	private Long id;
+	@Column(unique= true)
 	private String username;
 	private String password;
 	private String name;

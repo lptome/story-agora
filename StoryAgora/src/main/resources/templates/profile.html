@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html xmlns:th="https:www.//thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title></title>
+<link rel="stylesheet"
+   href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+   integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z"
+   crossorigin="anonymous">
+<script src="http://code.jquery.com/jquery-3.5.1.slim.js"
+   integrity="sha256-DrT5NfxfbHvMHux31Lkhxg42LY6of8TaYyK50jnxRnM="
+   crossorigin="anonymous"></script>
+<script type="text/javascript">
+	
+</script>
+</head>
+<body>
+   <div class="container" style="margin-top: 2em">
+      <div class="row">
+         <div class="col-8">
+            <h1>Profile</h1>
+         </div>
+         <div class="col-4">
+            <form action="/logout" method="post" class="float-right">
+               <input type="hidden" th:name="${_csrf.parameterName}"
+                  th:value="${_csrf.token}">
+               <button type="submit" class="btn btn-primary">Logout</button>
+            </form>
+         </div>
+      </div>
+      <div class="row">
+         <h1 th:text=${user.username}></h1>
+      </div>
+      <div class="row">
+         <h1>Published Stories</h1>
+         <div class="col-12" th:each="story: ${stories}">
+            <ul>
+               <li><a
+                  th:href="@{/story/{storyID}(storyID=${story.id})}"
+                  th:text="${story.title}"></a></li>
+            </ul>
+         </div>
+      </div>
+   </div>
+</body>
+</html>
