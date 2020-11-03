@@ -20,20 +20,21 @@ import com.storyagora.repositories.StoryRepository;
 
 @Controller
 public class StoryController {
-	
+
 	@Autowired
 	private StoryRepository storyRepo;
-	
+
 	@GetMapping("/story")
 	public String redirect() {
 		return "redirect:/dashboard";
 	}
-	
+
 	@GetMapping("story/{storyID}")
-	public String getStory(@PathVariable Long storyID, ModelMap model, HttpServletResponse response) throws IOException {
-		
+	public String getStory(@AuthenticationPrincipal User user, @PathVariable Long storyID, ModelMap model,
+			HttpServletResponse response) throws IOException {
+		model.put("user", user);
 		Optional<Story> storyOpt = storyRepo.findById(storyID);
-		
+
 		if (storyOpt.isPresent()) {
 			Story story = storyOpt.get();
 			model.put("story", story);
@@ -44,5 +45,4 @@ public class StoryController {
 		return "story";
 	}
 
-	
 }

@@ -18,7 +18,8 @@ public class CreateStoryController {
 	private StoryRepository storyRepo;
 
 	@GetMapping("/createStory")
-	public String getView(ModelMap model) {
+	public String getView(@AuthenticationPrincipal User user, ModelMap model) {
+		model.put("user", user);
 		model.put("story", new Story());
 		return "createStory";
 	}

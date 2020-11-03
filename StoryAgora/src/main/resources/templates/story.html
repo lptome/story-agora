@@ -15,9 +15,8 @@
 </script>
 </head>
 <body>
+   <div th:replace="fragments/navbar :: navbar"></div>
    <div class="container">
-
-      <div>Working</div>
       <h1 th:text="${story.title}">test</h1>
       <h2 th:text="${story.content}">test</h2>
    </div>
