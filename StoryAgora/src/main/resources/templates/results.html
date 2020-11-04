@@ -13,13 +13,23 @@
             <h1>Search Results</h1>
          </div>
       </div>
-      <div class="row">
+      <div class="row story-results">
          <h1>Found:</h1>
          <div class="col-12" th:each="story: ${stories}">
             <ul>
                <li><a
                   th:href="@{/story/{storyID}(storyID=${story.id})}"
                   th:text="${story.title}"></a></li>
+            </ul>
+         </div>
+      </div>
+      <div class="row user-results">
+         <h1>Found:</h1>
+         <div class="col-12" th:each="user: ${users}">
+            <ul>
+               <li><a
+                  th:href="@{/u/{userID}(userID=${user.username})}"
+                  th:text="${user.username}"></a></li>
             </ul>
          </div>
       </div>
