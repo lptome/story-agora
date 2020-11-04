@@ -1,7 +1,6 @@
 
 <div th:fragment="navbar">
-   <nav
-      class="navbar navbar-expand-lg border-bottom navbar-light bg-light">
+   <nav class="navbar navbar-expand-lg border-bottom navbar-dark">
       <a class="navbar-brand">Story Agora</a>
       <button class="navbar-toggler" type="button"
          data-toggle="collapse" data-target="#navbarContent"
@@ -11,16 +10,26 @@
       </button>
 
       <div class="collapse navbar-collapse" id="navbarContent">
+         <form action="/results"
+            class="form-inline my-2 my-lg-0">
+            <input class="form-control mr-sm-2" type="search"
+               name="search_query" placeholder="Search for a story"
+               aria-label="Search for a story">
+            <button class="btn btn-outline-success my-2 my-sm-0"
+               type="submit">Search</button>
+         </form>
          <ul class="navbar-nav ml-auto">
             <li class="nav-item"><a class="nav-link"
                href="/dashboard">Home</a></li>
             <li class="nav-item"><a th:text=${user.username}
-               class="nav-link" th:href="@{/u/{username}(username=${user.username})}"></a></li>
+               class="nav-link"
+               th:href="@{/u/{username}(username=${user.username})}"></a></li>
             <li class="nav-item">
-               <form action="/logout" method="post" class="float-right">
+               <form action="/logout" method="post"
+                  class="text-center nav-link">
                   <input type="hidden" th:name="${_csrf.parameterName}"
                      th:value="${_csrf.token}">
-                  <button type="submit" class="btn btn-primary">Logout</button>
+                  <button type="submit" class="btn" id="logoutBtn">Logout</button>
                </form>
             </li>
          </ul>
