@@ -9,12 +9,12 @@ import com.storyagora.domain.User;
 
 @Controller
 public class DashboardController {
-	
-	@GetMapping("/") 
-	public String rootView () {
+
+	@GetMapping("/")
+	public String rootView() {
 		return "index";
 	}
-	  
+
 	@GetMapping("/dashboard")
 	public String dashboard(@AuthenticationPrincipal User user, ModelMap model) {
 		model.put("user", user);

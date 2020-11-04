@@ -13,17 +13,19 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.storyagora.domain.Story;
 import com.storyagora.domain.User;
 import com.storyagora.repositories.StoryRepository;
+import com.storyagora.repositories.UserRepository;
 
 @Controller
 public class SearchController {
 
 	@Autowired
 	private StoryRepository storyRepo;
+	@Autowired
+	private UserRepository userRepo;
 
 	@GetMapping("/search")
 	public String search(@AuthenticationPrincipal User user, ModelMap model) {
@@ -37,16 +39,23 @@ public class SearchController {
 			throws IOException {
 		
 		model.put("user", user);
-		System.out.println(search_query);
+		
 		Optional<List<Story>> storyOpt = Optional.ofNullable(storyRepo.findByKeyword(search_query));
+		Optional<List<User>> userOpt = Optional.ofNullable(userRepo.findByKeyword(search_query));
+		
 		if (storyOpt.isPresent()) {
 			List<Story> stories = storyOpt.get();
 			model.put("stories", stories);
-			return "results";
-		} else {
+		} 
+		if (userOpt.isPresent()) {
+			List<User> users = userOpt.get();
+			model.put("users", users);
+		}
+		else {
 			response.sendError(HttpStatus.NOT_FOUND.value(), "Oops, we couldn't find a story with that ID.");
 			return "results";
 		}
 
+		return "results";
 	}
 }
