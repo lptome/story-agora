@@ -1,6 +1,10 @@
 @charset "ISO-8859-1";
 
 /* General */
+body {
+	background: #DCDCDC;
+}
+
 .title {
 	text-align: center;
 	margin: 2em 0 2em 0;
@@ -10,23 +14,20 @@
 	background: #35773f;
 	border: 1px solid #35773f;
 }
-
-.btn-primary:focus{
-	box-shadow: none !important;
-	background: #35773f;
-	border: 1px solid #35773f;
-}
-
-.btn-primary:hover{
-	background: #28582f;
-	border: 1px solid #28582f;
-}
-
-.btn-primary:active {
-	box-shadow: none !important;
-	background: #214a27 !important;
-	border: 1px solid #214a27 !important;
-}
+		.btn-primary:focus {
+			box-shadow: none !important;
+			background: #35773f;
+			border: 1px solid #35773f;
+		}
+		.btn-primary:hover {
+			background: #28582f;
+			border: 1px solid #28582f;
+		}
+		.btn-primary:active {
+			box-shadow: none !important;
+			background: #214a27 !important;
+			border: 1px solid #214a27 !important;
+		}
 
 /* Navbar */
 .navbar-dark {
@@ -52,18 +53,60 @@
 	border: 0;
 	border-radius: 0;
 	color: white;
-}
-
-#logoutBtn:active {
-	box-shadow: none;
-	border-radius: 0;
-}
-
-#logoutBtn:focus {
-	box-shadow: none;
-}
+}		
+		#logoutBtn:active {
+			box-shadow: none;
+			border-radius: 0;
+		}
+		
+		#logoutBtn:focus {
+			box-shadow: none;
+		}
 
 /* Dashboard */
 .create-button {
 	text-align: center;
 }
+
+/* Profile */
+.profile-container {
+	padding: 2em;
+	background: #ffffff;
+}
+
+/* Create Story */
+/* Summernote */
+.note-editable{
+	background: #ffffff;
+}
+
+.note-toolbar{
+	background: #061c24;
+}
+		.note-toolbar span{
+			color: #ffffff;
+		}
+		.note-toolbar button{
+			color: #ffffff;
+		}
+			.note-toolbar button:hover{
+				color: #81a53c;
+			}
+			.note-toolbar button:focus{
+				box-shadow: none;
+				color:	#81a53c;
+			}
+			
+.note-dropdown-menu{
+
+}
+	.note-dropdown-menu button{
+		color: #000000;
+	}
+		.note-dropdown-menu button:hover{
+		color: #000000;
+	}
+	.note-dropdown-menu a{
+		color: #000000;
+		text-decoration: none;
+	}

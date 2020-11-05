@@ -3,26 +3,85 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>Stories</title>
-<link rel="stylesheet"
-   href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
-   integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z"
-   crossorigin="anonymous">
-<script src="http://code.jquery.com/jquery-3.5.1.slim.js"
-   integrity="sha256-DrT5NfxfbHvMHux31Lkhxg42LY6of8TaYyK50jnxRnM="
-   crossorigin="anonymous"></script>
+<script th:replace="fragments/imports :: imports"></script>
+<link
+   href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.css"
+   rel="stylesheet">
+<script
+   src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.js"></script>
 <script type="text/javascript">
 	$(function() {
 		$("#back").click(function() {
 			window.history.back();
 		});
 	});
+
+	$(document)
+			.ready(
+					function() {
+						$('#storyContent')
+								.summernote(
+										{
+											height : 500,
+											width : 2000,
+											toolbar : [
+													[
+															'style',
+															[ 'bold', 'italic',
+																	'underline' ] ],
+													[
+															'font',
+															[
+																	'strikethrough',
+																	'superscript',
+																	'subscript' ] ],
+													[ 'fontsize',
+															[ 'fontsize' ] ],
+													[ 'color', [ 'color' ] ],
+													[
+															'para',
+															[ 'ul', 'ol',
+																	'paragraph' ] ], ],
+											placeholder : 'Begin your story...',
+											callbacks : {
+												onImageUpload : function(data) {
+													data.pop();
+												},
+												onPaste : function(e) {
+													var charLimit = 5000;
+													var textToPaste = e.originalEvent.clipboardData
+															.getData('text');
+													var currentText = $(
+															".note-editable")
+															.text();
+													//Prevent pasting if it exceeds the character limit;
+													if (textToPaste.length
+															+ currentText.length >= charLimit)
+														e.preventDefault();
+
+												},
+												onKeydown : function(e) {
+													var charLimit = 5000;
+													var text = $.trim($(
+															".note-editable")
+															.text());
+													var totalChar = text.length;
+
+													if (totalChar >= charLimit)
+														if (e.keyCode != 8)
+															e.preventDefault();
+												}
+											}
+										});
+					});
 </script>
 </head>
 <body>
-   <div th:replace="fragments/navbar :: navbar">   </div>
+   <div th:replace="fragments/navbar :: navbar"></div>
    <div class="container">
-      <h1>Create a new story</h1>
-      <form action="" method="post">
+      <h1 style="text-align: center; margin-top: 1em;">Create a new
+         story</h1>
+      <form id="contentForm" action="" method="post">
          <input type="hidden" th:name="${_csrf.parameterName}"
             th:value="${_csrf.token}" />
          <div class="form-group row">
@@ -31,19 +90,22 @@
                class="form-control" th:field="${story.title}">
          </div>
          <div class="form-group row">
-            <label for="content" class="col-12 col-form-label">Start
-               writing:</label>
-            <textarea required rows="25" maxlength="5000"
-               class="form-control" style="resize: none"
-               th:field="${story.content}"></textarea>
+            <div class="col-12" style="margin-bottom: 1em">Please note that images and videos
+               are not currently supported and attempting to publish
+               stories containing them will result in failure and loss
+               of work.</div>
+            <textarea id="storyContent" name="editordata" required
+               rows="25" maxlength="5000" class="form-control col-12"
+               th:field="${story.content}"> 
+            </textarea>
          </div>
          <div class="row">
             <div class="col-6">
-               <button type="button" class="btn btn-primary"
-                  id="back">Back</button>
+               <button type="button" class="btn btn-primary" id="back">Back</button>
             </div>
             <div class="col-6">
-               <button type="submit" class="btn btn-primary float-right">Publish</button>
+               <button type="submit" class="btn btn-primary float-right"
+                  id="publish">Publish</button>
             </div>
          </div>
       </form>
