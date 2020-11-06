@@ -17,7 +17,9 @@
             <h1 th:text="${story.title}"></h1>
          </div>
          <div class="col-12 author">
-            <p th:text="'by: '+ ${story.user.username}"> </p>
+            <span>by: </span> <a th:text="${story.user.name}"
+               th:href="@{/u/{username}(username=${story.user.username})}">
+            </a>
          </div>
       </div>
       <div class="row">
@@ -26,7 +28,8 @@
          </div>
       </div>
    </div>
-   <a th:href="@{/story/{storyID}/editStory(storyID=${story.Id})}">EDIT STORY</a>
+   <a th:href="@{/story/{storyID}/editStory(storyID=${story.Id})}">EDIT
+      STORY</a>
 
 </body>
 </html>
