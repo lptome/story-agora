@@ -58,11 +58,17 @@ public class StoryController {
 		
 		if (storyOpt.isPresent()) {
 			story = storyOpt.get();
-			model.put("story", story);
+			if (story.getUser().getId().equals(user.getId())) {
+				model.put("user", user);
+				model.put("story", story);
+				return "editStory";
+			} else {
+				response.sendError(HttpStatus.NOT_FOUND.value(), "You don't have permission to access this.");
+				return "error";
+			}
 		}
 		
-		model.put("user", user);
-		model.put("story", story);
+		
 		return "editStory";
 	}
 
