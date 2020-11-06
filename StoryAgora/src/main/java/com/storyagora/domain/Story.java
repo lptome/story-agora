@@ -1,5 +1,7 @@
 package com.storyagora.domain;
 
+
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -14,6 +16,7 @@ public class Story {
 	private Long id;
 	private String title;
 	private String content;
+	
 	private User user;
 	
 	@Id @GeneratedValue(strategy=GenerationType.IDENTITY)
@@ -29,6 +32,8 @@ public class Story {
 	public void setTitle(String title) {
 		this.title = title;
 	}
+	
+	@Column(columnDefinition="TEXT", length=10000)
 	public String getContent() {
 		return content;
 	}
@@ -40,6 +45,7 @@ public class Story {
 	public User getUser() {
 		return user;
 	}
+	
 	public void setUser(User user) {
 		this.user = user;
 	}

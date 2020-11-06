@@ -16,6 +16,7 @@ public class CustomSecurityUser extends User implements UserDetails{
 		this.setAuthorities(user.getAuthorities());
 		this.setId(user.getId());
 		this.setName(user.getName());
+		this.setBiography(user.getBiography());
 		this.setUsername(user.getUsername());
 		this.setPassword(user.getPassword());
 	}
@@ -34,7 +35,11 @@ public class CustomSecurityUser extends User implements UserDetails{
 	public String getUsername() {
 		return super.getUsername();
 	}
-
+	
+	@Override
+	public String getBiography() {
+		return super.getBiography();
+	}
 	@Override
 	public boolean isAccountNonExpired() {
 		return true;

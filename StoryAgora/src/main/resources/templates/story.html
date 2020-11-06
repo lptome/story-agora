@@ -2,6 +2,7 @@
 <html xmlns:th="http://thymeleaf.org">
 <head>
 <meta charset="ISO-8859-1">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Stories</title>
 <script th:replace="fragments/imports :: imports"></script>
 <script type="text/javascript">
@@ -19,13 +20,13 @@
             <p th:text="'by: '+ ${story.user.username}"> </p>
          </div>
       </div>
-      <div class="row"></div>
       <div class="row">
          <div class="col-12 content">
-            <h2 th:utext="${story.content}">test</h2>
+            <p th:utext="${story.content}">test</p>
          </div>
       </div>
    </div>
+   <a th:href="@{/story/{storyID}/editStory(storyID=${story.Id})}">EDIT STORY</a>
 
 </body>
 </html>
