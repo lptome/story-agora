@@ -18,7 +18,7 @@ public class Comment {
 		this.pk = pk;
 	}
 	
-	@Column(length=5000)
+	@Column(length=1000)
 	public String getText() {
 		return text;
 	}

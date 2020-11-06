@@ -2,6 +2,7 @@
 <html xmlns:th="https:www.//thymeleaf.org">
 <head>
 <meta charset="ISO-8859-1">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <title></title>
 <script th:replace="fragments/imports :: imports"></script>
 <script type="text/javascript">
@@ -10,10 +11,24 @@
 </head>
 <body>
    <div th:replace="fragments/navbar :: navbar"></div>
-   <div class="container" style="margin-top: 2em">
+   
+<!--    Show edit profile button if on own profile -->
+   <div th:if="${profile.username} == ${user.username}">
+      <a
+         th:href="@{/u/{username}/edit_profile(username=${profile.username})}">Edit
+         Profile</a>
+   </div>
+
+
+   <div class="container profile-container">
       <div class="row">
          <div class="col-12 title">
-            <h1 th:text="'Profile - ' + ${user.username}"></h1>
+            <h1 th:text="'Profile - ' + ${profile.name}"></h1>
+         </div>
+      </div>
+      <div class="row">
+         <div class="col-12 biography">
+            <p th:text="${profile.biography}"></p>
          </div>
       </div>
       <div class="row">

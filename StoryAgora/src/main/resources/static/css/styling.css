@@ -75,6 +75,13 @@ body {
 }
 
 /* Create Story */
+/* Story View */
+.content {
+	background: #ffd666;
+	border-radius: 0.5em;
+	margin-bottom: 3em;
+}
+
 /* Summernote */
 .note-editable{
 	background: #ffffff;
