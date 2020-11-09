@@ -1,0 +1,17 @@
+<div th:fragment="user-preview" class="user-preview">
+   <div th:each="user: ${users}" class="user-prev-container">
+      <a th:href="@{/u/{userID}(userID=${user.username})}"></a>
+      <div class="row preview-header">
+         <div class="user-prev-name">
+            <div class="preview-title">
+               <h4 th:text="${user.name}"></h4>
+            </div>
+         </div>
+      </div>
+      <div class="preview-body">
+         <div class="user-prev-biography">
+            <p th:text="${'&quot;' + user.biography + '&quot;'}"></p>
+         </div>
+      </div>
+   </div>
+</div>

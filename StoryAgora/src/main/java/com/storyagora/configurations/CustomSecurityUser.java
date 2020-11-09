@@ -1,4 +1,4 @@
-package com.storyagora.security;
+package com.storyagora.configurations;
 
 import java.util.Set;
 

@@ -1,0 +1,30 @@
+<div th:fragment="story-preview" class="story-preview">
+   <div th:each="story: ${stories}" class="story-prev-container">
+      <div class="row preview-header">
+         <div class="preview-title">
+            <a th:href="@{/story/{storyID}(storyID=${story.id})}"
+               th:text="${story.title}"></a>
+         </div>
+         <div th:if="${story.user.username} != ${user.username}"
+            class="preview-author ml-auto">
+            <a
+               th:href="@{/u/{username}(username=${story.user.username})}"
+               th:text="${story.user.username}"></a>
+         </div>
+      </div>
+      <div class="preview-body">
+         <a th:href="@{/story/{storyID}(storyID=${story.id})}"> <span
+            class="story-box-link"></span>
+         </a>
+         <div class="preview-summary">
+            <p th:text="${story.summary}">
+         </div>
+         <div class="preview-date">
+            <span
+               th:text="'Published: ' + ${#dates.day(story.createdDate)} + ' ' 
+               + ${#dates.monthNameShort(story.createdDate)} + ' '
+               + ${#dates.year(story.createdDate)}"></span>
+         </div>
+      </div>
+   </div>
+</div>

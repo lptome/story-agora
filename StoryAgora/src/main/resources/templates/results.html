@@ -15,23 +15,41 @@
          </div>
       </div>
       <div class="row story-results">
-         <h1>Stories</h1>
-         <div class="col-12" th:each="story: ${stories}">
-            <ul>
-               <li><a
-                  th:href="@{/story/{storyID}(storyID=${story.id})}"
-                  th:text="${story.title}"></a></li>
-            </ul>
+         <div class="col">
+            <h1>Stories</h1>
+         </div>
+      </div>
+      <div class="row">
+         <div class="col">
+            <div th:if="${#sets.isEmpty(stories)}">
+               <h6 style="font-style: italic; margin-left: 1em;">
+                  0 stories found.
+                  </h5>
+            </div>
+         </div>
+      </div>
+      <div class="row">
+         <div class="col">
+            <div th:replace="fragments/storyPreview :: story-preview"></div>
          </div>
       </div>
       <div class="row user-results">
+         <div class="col">
          <h1>Users</h1>
-         <div class="col-12" th:each="user: ${users}">
-            <ul>
-               <li><a
-                  th:href="@{/u/{userID}(userID=${user.username})}"
-                  th:text="${user.name}"></a></li>
-            </ul>
+         </div>
+      </div>
+      <div class="row">
+      <div class="col">
+            <div th:if="${#lists.isEmpty(users)}">
+               <h6 style="font-style: italic; margin-left: 1em;">
+                  0 users found.
+                  </h5>
+            </div>
+         </div>
+      </div>
+      <div class="row">
+         <div class="col">
+            <div th:replace="fragments/userPreview :: user-preview"></div>
          </div>
       </div>
    </div>
