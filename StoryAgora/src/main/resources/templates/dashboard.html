@@ -11,7 +11,6 @@
 			window.location.href = "/createStory";
 		});
 	});
-
 </script>
 </head>
 <body>
@@ -22,7 +21,11 @@
             <h2>Recent Stories</h2>
          </div>
       </div>
-      <div class="story-list" th:replace="fragments/storyPreview :: story-preview"></div>
+      <div class="story-list"
+         th:replace="fragments/storyPreview :: story-preview"></div>
+      <div class="text-center" th:if="${#lists.isEmpty(stories)}" style="margin: 2em">
+         <h5>Wow, such empty...</h5>
+      </div>
       <div class="row">
          <div class="col-12 create-button">
             <button type="button" class="btn btn-primary"

@@ -2,7 +2,8 @@
    <div th:each="story: ${stories}" class="story-prev-container">
       <div class="row preview-header">
          <div class="preview-title">
-            <a th:href="@{/story/{storyID}(storyID=${story.id})}"
+            <i class="fa fa-book mr-2" style="font-size: 1.5em" ></i> <a
+               th:href="@{/story/{storyID}(storyID=${story.id})}"
                th:text="${story.title}"></a>
          </div>
          <div th:if="${story.user.username} != ${user.username}"
@@ -14,7 +15,7 @@
       </div>
       <div class="preview-body">
          <a th:href="@{/story/{storyID}(storyID=${story.id})}"> <span
-            class="story-box-link"></span>
+            class="box-link"></span>
          </a>
          <div class="preview-summary">
             <p th:text="${story.summary}">

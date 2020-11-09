@@ -24,7 +24,7 @@
             <div th:if="${#sets.isEmpty(stories)}">
                <h6 style="font-style: italic; margin-left: 1em;">
                   0 stories found.
-                  </h5>
+                  </h6>
             </div>
          </div>
       </div>
@@ -35,15 +35,14 @@
       </div>
       <div class="row user-results">
          <div class="col">
-         <h1>Users</h1>
+            <h1>Users</h1>
          </div>
       </div>
       <div class="row">
-      <div class="col">
+         <div class="col">
             <div th:if="${#lists.isEmpty(users)}">
-               <h6 style="font-style: italic; margin-left: 1em;">
-                  0 users found.
-                  </h5>
+               <h6 style="font-style: italic; margin-left: 1em;">0
+                  users found.</h6>
             </div>
          </div>
       </div>

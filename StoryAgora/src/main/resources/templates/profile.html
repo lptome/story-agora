@@ -22,10 +22,12 @@
 
    <div class="container profile-container">
       <div class="profile-banner row">
-         <!--    Show edit profile button if on own profile -->
-         <div class="profile-name">
-            <h1 th:text="${profile.name}"></h1>
+         <div class="col">
+            <div class="profile-name">
+               <h1 th:text="${profile.name}"></h1>
+            </div>
          </div>
+         <!--    Show edit profile button if on own profile -->
          <div class="ml-auto"
             th:if="${profile.username} == ${user.username}">
             <button id="editButton"
@@ -44,9 +46,18 @@
          </fieldset>
       </div>
       <div class="row">
-         <h1>Published Stories</h1>
+         <div class="col-12">
+            <h1>Published Stories</h1>
+         </div>
+         <div class="col-12">
+            <div th:if="${#sets.isEmpty(user.stories)}">
+               <h5 style="font-style: italic;">Looks like this user
+                  hasn't posted any stories.</h5>
+            </div>
+         </div>
       </div>
-         <div th:replace="fragments/storyPreview :: story-preview" th:remove="preview-author"></div>
+      <div th:replace="fragments/storyPreview :: story-preview"
+         th:remove="preview-author"></div>
    </div>
 </body>
 </html>

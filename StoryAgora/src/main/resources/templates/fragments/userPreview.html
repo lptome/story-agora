@@ -4,11 +4,19 @@
       <div class="row preview-header">
          <div class="user-prev-name">
             <div class="preview-title">
+               <i class="fa fa-user"></i>
                <h4 th:text="${user.name}"></h4>
             </div>
          </div>
+         <div class="ml-auto p-2">
+            <span
+               th:text="${#sets.size(user.stories)} + ' ' + 'stories'"></span>
+         </div>
       </div>
       <div class="preview-body">
+         <a th:href="@{/u/{username}(username=${user.username})}"> <span
+            class="box-link"></span>
+         </a>
          <div class="user-prev-biography">
             <p th:text="${'&quot;' + user.biography + '&quot;'}"></p>
          </div>
