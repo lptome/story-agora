@@ -4,30 +4,29 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <script th:replace="fragments/imports :: imports"></script>
 <script type="text/javascript">
+	//Back button
 	$(function() {
 		$("#back").click(function() {
 			window.history.back();
 		});
 	});
-	
-	$(function(){
-		
-	$("#form").submit(function(e){
-		
-		var pass = $("#password").val();
-		var confirmPass = $("confirmPassword").val();
-		
-		if (pass != confirmPass){
-			e.preventDefault();
-			$("#passAlert").css("display", "block");
-		}
-	})
-	})
+
+	//Check passwords match
+	$(function() {
+		$("#form").submit(function(e) {
+			var pass = $("#password").val();
+			var confirmPass = $("#confirmPassword").val();
+			if (pass != confirmPass) {
+				e.preventDefault();
+				$("#passAlert").css("display", "block");
+			}
+		});
+	});
 </script>
 <title>Create an account</title>
 </head>
 <body>
-   <div class="container">
+   <div class="container d-flex flex-column justify-content-center" style="height: 60vh;">
       <div class="card">
          <div class="card-header">
             <h3>Join our community</h3>
@@ -65,7 +64,12 @@
                            placeholder="Confirm Password">
                      </div>
                   </div>
-                  <div id="passAlert" class="alert alert-danger" style="display: none">Passwords do not match</div>
+                  <div id="passAlert" class="alert alert-danger"
+                     style="display: none">Passwords do not match</div>
+                  <div th:if="${errorMessage} != null">
+                     <div th:utext="${errorMessage}"
+                        class="alert alert-danger"></div>
+                  </div>
                   <div class="d-flex justify-content-center">
                      <button type="button" class="btn btn-primary m-2"
                         id="back">Back</button>

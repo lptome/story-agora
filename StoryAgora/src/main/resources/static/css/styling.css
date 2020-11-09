@@ -10,6 +10,10 @@ body {
 	margin: 2em 0 2em 0;
 }
 
+.landing {
+	border-radius: 1em;
+	padding: 5em 1em 5em 1em;
+}
 .btn-primary {
 	background: #35773f;
 	border: 1px solid #35773f;
@@ -29,24 +33,59 @@ body {
 			border: 1px solid #214a27 !important;
 		}
 
+.btn-delete {
+	color: white;
+	background: #990000;
+	border: 1px solid #990000;
+}
+		.btn-delete:focus {
+			box-shadow: none !important;
+			background:  #2f0c0c;
+			border: 1px solid  	#2f0c0c;
+		}
+		.btn-delete:hover {
+			color: white;
+			background: #660000;
+			border: 1px solid #660000;
+		}
+		.btn-delete:active {
+			box-shadow: none !important;
+			background: #660000 !important;
+			border: 1px solid #660000 !important;
+		}
+		
 /* Navbar */
+.navbar {
+}
 .navbar-dark {
 	background: #061c24;
 }
 
 .navbar-brand {
-	color: white !important;
+	padding: 0.2em;
+	color:   #ffd666 !important;
 }
 
 .nav-item {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
 	margin: 0 1em 0 1em;
 }
 
 .nav-link {
 	display: flex;
 	text-align: center;
-	color: white !important;
-}
+	justify-content: center;
+	color: #ffd666 !important;
+}	
+	
+	.nav-link li.a {
+			color: #ffd666 !important;
+	}
+	.nav-link button {
+			color: #ffd666 !important;
+	}
 
 #logoutBtn {
 	padding: 0;
@@ -70,23 +109,155 @@ body {
 
 /* Profile */
 .profile-container {
-	padding: 2em;
-	background: #ffffff;
+	display: flex;
+	flex-direction: column;
+	padding: 5em;
 }
 
+.profile-banner {
+	height: 3em;
+	align-items: center;
+}
+
+	.profile-name {		
+		height: 100%;
+	}
+	.profile-edit-btn{
+		font-size: 0.9em;
+	}
+
+.biography {
+	margin: 2em 0 2em 0;
+	border: 1px solid gray;
+	border-radius: 0.5em;	
+}
+	.biography-legend {
+		width: 100px;
+		font-size: 1em;
+		text-align: center;
+		font-weight: bold;
+	}
+		.biography-legend span {
+			
+		}
+	.biography-text {
+
+	}
+	
+/* Story Preview */
+.story-preview {
+	display: block;
+
+}
+.story-box-link {
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	top: 0;
+	left: 0;
+}
+	.story-prev-container {
+		border-radius: 0.5em;
+		background: white;
+		margin: 1em 0 1em 0;
+		padding: 0 1em 0.2em 1em;
+
+	}
+	.story-prev-container a {
+		color: white;
+	}
+	.preview-header {
+		padding: 0.4em;
+		height: 100%;
+		background:  #061c24;
+	}
+		.preview-title {
+			margin-left: 1em;
+		}
+		.preview-author {
+			margin-right: 1em;
+		}
+	.preview-body {	
+		position: relative;
+		padding: 0.4em;
+	}
+		.preview-date {
+			color: gray;
+			text-align: right;
+			font-style: italic;
+			font-size: 0.8em;
+		}
+/* User Preview */
+.user-preview {
+	justify-content: center;
+}
+.user-box-link {
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	top: 0;
+	left: 0;
+}
+	.user-prev-container {
+		border-radius: 0.5em;
+		background: white;
+		margin: 1em 0 1em 0;
+		padding: 0 1em 0.2em 1em;
+	}
+	.preview-header {
+		color: white;
+		background:  #061c24;
+	}
+		.preview-title {
+			margin-left: 1em;
+		}
+		.preview-author {
+			margin-right: 1em;
+		}
+	.preview-body {	
+		position: relative;
+		padding: 0.4em;
+	}
+		.preview-date {
+			color: gray;
+			text-align: right;
+			font-style: italic;
+			font-size: 0.8em;
+		}	
+		
+	
 /* Create Story */
+.story-editor {
+	margin-top: 4em;
+	margin-bottom: 4em;
+}
 /* Story View */
+.story-title{
+	text-align: center;
+	margin: 2em 0 2em 0;
+}
+	.story-date {
+		font-style: italic;
+		color: gray;
+	}
 .content {
-	background: #ffd666;
-	border-radius: 0.5em;
+	padding: 1em;
+	background: #ffebb3;
 	margin-bottom: 3em;
 }
+	/* Comments */
+	.comment {
+		
+		padding: 1em;
+		border: 1px solid black;
+		border-radius: 0.5em;
+		margin: 2em;
+	}
 
 /* Summernote */
 .note-editable{
 	background: #ffffff;
 }
-
 .note-toolbar{
 	background: #061c24;
 }
@@ -116,4 +287,14 @@ body {
 	.note-dropdown-menu a{
 		color: #000000;
 		text-decoration: none;
+	}
+	
+	
+.modal-footer {
+	display: grid;
+	grid-template-columns: repeat(2, 1fr);
+	column-gap: 15em;
+}
+	.modal-footer button {
+
 	}
