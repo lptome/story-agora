@@ -9,7 +9,7 @@ import com.storyagora.domain.User;
 
 public interface UserRepository extends JpaRepository<User, Long>{
 
-	public User findByUsername(String username);
+	public User findByUsernameIgnoreCase(String username);
 	
 	@Query("SELECT u from User u WHERE u.name LIKE %?1%")
 	public List<User> findByKeyword(String keyword);

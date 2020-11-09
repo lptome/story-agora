@@ -6,9 +6,9 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
+import com.storyagora.configurations.CustomSecurityUser;
 import com.storyagora.domain.User;
 import com.storyagora.repositories.UserRepository;
-import com.storyagora.security.CustomSecurityUser;
 
 @Service
 public class UserDetailsServiceImpl implements UserDetailsService {
@@ -18,7 +18,7 @@ public class UserDetailsServiceImpl implements UserDetailsService {
 	
 	@Override
 	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-		User user = userRepo.findByUsername(username);
+		User user = userRepo.findByUsernameIgnoreCase(username);
 		
 		if (user == null)
 			throw new UsernameNotFoundException("Invalid Username and Password");

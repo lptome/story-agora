@@ -7,9 +7,9 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.authentication.preauth.PreAuthenticatedAuthenticationToken;
 import org.springframework.stereotype.Service;
 
+import com.storyagora.configurations.Authority;
 import com.storyagora.domain.User;
 import com.storyagora.repositories.UserRepository;
-import com.storyagora.security.Authority;
 
 @Service
 public class UserService {
@@ -28,6 +28,14 @@ public class UserService {
 		user.getAuthorities().add(authority);
 		return userRepo.save(user);
 	}
+	
+	public boolean userAlreadyExists(User user) {
+		
+		if (userRepo.findByUsernameIgnoreCase(user.getUsername()) != null)
+			return true;
+		
+		return false;
+	}
 
 	public User update(User oldUser, User user) {
 
@@ -37,13 +45,14 @@ public class UserService {
 		// Assign details to this new object.
 		// Static details (username, password) are pulled from the old user
 		// and the updated details are obtained from the new one.
-		newUser.setUsername(oldUser.getUsername());
-		newUser.setAuthorities(oldUser.getAuthorities());
-		newUser.setBiography(user.getBiography());
 		newUser.setId(oldUser.getId());
-		newUser.setName(user.getName());
+		newUser.setUsername(oldUser.getUsername());
 		newUser.setPassword(oldUser.getPassword());
+		newUser.setName(user.getName());
+		newUser.setBiography(user.getBiography());
+		newUser.setAuthorities(oldUser.getAuthorities());
 		newUser.setStories(oldUser.getStories());
+		newUser.setComments(oldUser.getComments());
 
 		// Updates the Authentication Principal so that changes are
 		// reflected without needing to end the current session

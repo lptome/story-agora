@@ -23,10 +23,13 @@ public class StoryService {
 		Story newStory = new Story();
 
 		// Assign details to this new object.
-		newStory.setContent(story.getContent());
-		newStory.setTitle(story.getTitle());
 		newStory.setId(oldStory.getId());
 		newStory.setUser(oldStory.getUser());
+		newStory.setComments(oldStory.getComments());
+		newStory.setCreatedDate(oldStory.getCreatedDate());
+		newStory.setContent(story.getContent());
+		newStory.setSummary(story.getSummary());
+		newStory.setTitle(story.getTitle());
 
 		return newStory;
 

@@ -3,6 +3,7 @@ package com.storyagora.web;
 import java.io.IOException;
 import java.util.List;
 import java.util.Optional;
+import java.util.SortedSet;
 
 import javax.servlet.http.HttpServletResponse;
 
@@ -40,11 +41,11 @@ public class SearchController {
 		
 		model.put("user", user);
 		
-		Optional<List<Story>> storyOpt = Optional.ofNullable(storyRepo.findByKeyword(search_query));
+		Optional<SortedSet<Story>> storyOpt = Optional.ofNullable(storyRepo.findByKeyword(search_query));
 		Optional<List<User>> userOpt = Optional.ofNullable(userRepo.findByKeyword(search_query));
 		
 		if (storyOpt.isPresent()) {
-			List<Story> stories = storyOpt.get();
+			SortedSet<Story> stories = storyOpt.get();
 			model.put("stories", stories);
 		} 
 		if (userOpt.isPresent()) {

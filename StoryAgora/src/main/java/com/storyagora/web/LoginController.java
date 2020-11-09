@@ -34,8 +34,14 @@ public class LoginController {
 	}
 
 	@PostMapping("/register")
-	public String registerPost(@ModelAttribute User user) {
-		userService.save(user);
-		return "redirect:/login";
+	public String registerPost(@ModelAttribute User user, ModelMap model) {
+		
+		if (!userService.userAlreadyExists(user)) {			
+			userService.save(user);
+			return "redirect:/login";
+		} else {
+			model.put("errorMessage", "Sorry, that username is taken.");
+			return "/register";
+		}
 	}
 }
